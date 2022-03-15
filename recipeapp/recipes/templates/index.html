@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block recipes %}
+
+<section id="items">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Random Recipes</h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for recipe in recipes %}
+                <div class="col-lg-4 col-md-6 col-sm-12 wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+                    <div class="recipe-item text-center">
+                        <a href="{% url 'recipe_details' recipe.id %}">
+                            <img src="{{ recipe.imageUrl }}" alt="{{ recipe.name }}">
+                        </a>
+                        <br>
+                        <h3>{{ recipe.name }}</h3>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock recipes %}
