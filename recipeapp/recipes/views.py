@@ -24,7 +24,7 @@ def index(request):
     else:
         all_ingredients = Ingredient.objects.all()
         recipes = list(Recipe.objects.all())
-        recipes = random.sample(recipes, 9)
+        recipes = random.sample(recipes, 9) if len(recipes) > 9 else recipes
         context = {
             'recipes' : recipes,
             'ingredients' : all_ingredients,

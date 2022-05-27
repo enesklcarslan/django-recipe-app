@@ -106,6 +106,16 @@ def main():
         ingredient_obj = Ingredient.objects.get_or_create(name=ingredient)[0]
         recipe.ingredients.add(ingredient_obj)
     recipe.save()
+    print(f"{recipe_name} saved successfully")
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main() -> Doesn't work while running from manage.py shell. No idea why.
+try:
+    while True:
+        selection = input("Enter 1 to add a recipe, 2 to exit: ")
+        if selection == "1":
+            main()
+        elif selection == "2":
+            break
+except:
+    print("An error occured while trying to get the recipe")

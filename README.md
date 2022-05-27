@@ -9,11 +9,13 @@ A Django app for publishing recipes that end users can filter by the ingredients
 ## How to run
 
  - ### Firstly, run:
-
-`python manage.py runserver`
-
+`python manage.py migrate` in order to apply the database migrations.
+ - ### Secondly, run:
+`python manage.py runserver` to start the development server. You can access the app at http://localhost:8000/
  - ### To scrape a recipe from nefisyemektarifleri.com:
-`python recipes\bot.py`
+ Open another terminal and run:
+`python manage.py shell`
+`exec(open('recipes/bot.py').read())`
 Then enter the recipe URL and the bot will scrape and add the recipe to the database.
 
 
