@@ -17,7 +17,7 @@ def index(request):
         relevant_recipes = Recipe.objects.filter(
             id__in=Subquery(
                 Recipe.objects.filter(
-                    ingredients__name__in=(selected_ingredients)
+                    ingredients__name__in=selected_ingredients
                 )
                 .values("id")
                 .alias(cnt=Count("id"))
@@ -33,7 +33,7 @@ def index(request):
         return render(request, 'recipes.html', context)
     
     all_ingredients = Ingredient.objects.all()
-    recipes = list(Recipe.objects.all())
+    recipes = Recipe.objects.order_by("?")
     recipes = random.sample(recipes, 9) if len(recipes) > 9 else recipes
     context = {
         'recipes' : recipes,
